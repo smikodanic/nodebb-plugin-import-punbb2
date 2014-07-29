@@ -71,7 +71,7 @@ read carefully:
 now use this [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) to import your files into NodeBB's database
 
 ### Versions tested on:
-  - PUNBB 7.5.7
+  - PUNBB > 1.3.2
 
 ### You configs are required
 
