@@ -1,12 +1,12 @@
 nodebb-plugin-import-punbb
-========================
+==========================
+
+*SEE:* http://www.workinprogress.ca/punbb-to-nodebb/(http://www.workinprogress.ca/punbb-to-nodebb/) for a step-by-step export
 
 a PUNBB forum exporter to import-ready files.
 
 based on [nodebb-plugin-import-ubb](https://github.com/akhoury/nodebb-plugin-import-ubb)
 into this plugin to work along with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import).
-
-__works, but still young__
 
 ### What is this?
 
