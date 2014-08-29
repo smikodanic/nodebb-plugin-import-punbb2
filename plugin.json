@@ -3,9 +3,9 @@
 	"name": "nodebb-plugin-import-punbb",
 	"description": "Export your PUNBB forum into a structured data files that nodebb-plugin-import can understand",
 	"url": "https://github.com/patricksebastien/nodebb-plugin-import-punbb",
-	"library": "./lib/index.js",
-	"hooks": [
-		{ "hook": "filter:admin.header.build", "method": "admin.menu", "callbacked": false },
-		{ "hook": "filter:admin.create_routes", "method": "admin.route", "callbacked": true }
-	]
+    "library": "./admin/index.js",
+    "hooks": [
+        { "hook": "filter:admin.header.build", "method": "admin.menu", "callbacked": false },
+        { "hook": "filter:admin.create_routes", "method": "admin.route", "callbacked": true }
+    ]
 }

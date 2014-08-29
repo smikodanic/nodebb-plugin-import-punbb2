@@ -1,8 +1,8 @@
 {
   "name": "nodebb-plugin-import-punbb",
-  "version": "0.0.1",
-  "description": "a PUNBB forum exporter to import-ready files",
-  "main": "./lib/export.js",
+  "version": "0.1.0",
+  "description": "a PUNBB forum exporter to NodeBB",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,17 +25,14 @@
     "url": "https://github.com/patricksebastien/nodebb-plugin-import-punbb/issues"
   },
   "dependencies": {
-    "underscore": "~1.5.2",
-    "fs-extra": "~0.8.1",
-    "async": "~0.2.9",
-    "optimist": "~0.6.0",
-    "marked": "~0.1.6",
-    "mysql": "~2.0.x",
-    "tiny-logger": "~0.0.x",
-    "node-persist": "git://github.com/akhoury/node-persist.git#master"
+      "underscore": "~1.6.0",
+      "fs-extra": "~0.11.0",
+      "async": "~0.9.0",
+      "marked": "~0.3.2",
+      "mysql": "~2.4.2"
   },
   "homepage": "https://github.com/patricksebastien/nodebb-plugin-import-punbb",
   "bin": {
-    "nodebb-plugin-import-punbb": "export.js"
+    "nodebb-plugin-import-punbb": "test.js"
   }
 }
