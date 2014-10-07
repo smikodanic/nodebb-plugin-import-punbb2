@@ -9,5 +9,5 @@ require('./index').testrun({
 
     tablePrefix: 'punn_'
 }, function(err, results) {
-    fs.writeFileSync('./tmp.json', JSON.stringify(results, undefined, 2));
+    // fs.writeFileSync('./tmp.json', JSON.stringify(results, undefined, 2));
 });
