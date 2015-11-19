@@ -3,7 +3,7 @@ var async = require('async');
 var mysql = require('mysql');
 var _ = require('underscore');
 var noop = function(){};
-var logPrefix = '[nodebb-plugin-import-punbb]';
+var logPrefix = '[nodebb-plugin-import-punbb2]';
 
 (function(Exporter) {
 
