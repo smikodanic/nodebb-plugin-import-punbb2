@@ -71,17 +71,17 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
                     // nbb forces signatures to be less than 150 chars
                     // keeping it HTML see https://github.com/akhoury/nodebb-plugin-import#markdown-note
                     row._signature = Exporter.truncateStr(row._signature || '', 150);
-    
+
                     // from unix timestamp (s) to JS timestamp (ms)
                     row._joindate = ((row._joindate || 0) * 1000) || startms;
-    
+
                     // lower case the email for consistency
                     row._email = (row._email || '').toLowerCase();
-    
+
                     // I don't know about you about I noticed a lot my users have incomplete urls, urls like: http://
                     row._picture = Exporter.validateUrl(row._picture);
                     row._website = Exporter.validateUrl(row._website);
-    
+
                     map[row._uid] = row;
                 });
 
@@ -90,7 +90,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
     };
 
     Exporter.getCategories = function(callback) {
-        return Exporter.getPaginatedCategories(0, -1, callback);    
+        return Exporter.getPaginatedCategories(0, -1, callback);
     };
     Exporter.getPaginatedCategories = function(start, limit, callback) {
         callback = !_.isFunction(callback) ? noop : callback;
@@ -203,7 +203,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             + prefix + 'topic_id as _tid, '
             + prefix + 'posted as _timestamp, '
             + prefix + 'posts.message as _content, '
-            + prefix + 'poster_id as _uid '
+            + prefix + 'poster_id as _uid, '
             + prefix + 'posts.poster_ip as _ip '
             + 'FROM ' + prefix + 'posts '
             + 'ORDER BY ' + prefix + 'posts.posted '
@@ -265,7 +265,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             }
         ], callback);
     };
-    
+
     Exporter.paginatedTestrun = function(config, callback) {
         async.series([
             function(next) {
