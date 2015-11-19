@@ -1,6 +1,6 @@
 {
-  "name": "nodebb-plugin-import-punbb",
-  "version": "0.1.3",
+  "name": "nodebb-plugin-import-punbb2",
+  "version": "1.0.0",
   "description": "a PUNBB forum exporter to NodeBB",
   "main": "./index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/patricksebastien/nodebb-plugin-import-punbb"
+    "url": "https://github.com/akhoury/nodebb-plugin-import-punbb2"
   },
   "keywords": [
     "punbb",
@@ -19,10 +19,13 @@
     "export",
     "import"
   ],
-  "author": "patricksebastien <patrick@11h11.com>",
+  "authors": [
+    {"email": "patricksebastien <patrick@11h11.com>"},
+    {"url": "https://github.com/akhoury"}
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/patricksebastien/nodebb-plugin-import-punbb/issues"
+    "url": "https://github.com/akhoury/nodebb-plugin-import-punbb2/issues"
   },
   "nbbpm": {
     "index": false
@@ -34,7 +37,7 @@
       "marked": "~0.3.2",
       "mysql": "~2.4.2"
   },
-  "homepage": "https://github.com/patricksebastien/nodebb-plugin-import-punbb",
+  "homepage": "https://github.com/akhoury/nodebb-plugin-import-punbb2",
   "bin": {
     "nodebb-plugin-import-punbb": "test.js"
   }
