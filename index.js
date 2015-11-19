@@ -204,7 +204,7 @@ var logPrefix = '[nodebb-plugin-import-punbb]';
             + prefix + 'posted as _timestamp, '
             + prefix + 'posts.message as _content, '
             + prefix + 'poster_id as _uid '
-            + prefix + 'posts.poster_ip as _ip, '
+            + prefix + 'posts.poster_ip as _ip '
             + 'FROM ' + prefix + 'posts '
             + 'ORDER BY ' + prefix + 'posts.posted '
             + (start >= 0 && limit >= 0 ? 'LIMIT ' + start + ',' + limit : '');
