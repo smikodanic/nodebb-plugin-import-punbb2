@@ -1,9 +1,7 @@
-nodebb-plugin-import-punbb
+nodebb-plugin-import-punbb2
 ==========================
 
-*SEE this link for a step-by-step export:*
-~~http://www.workinprogress.ca/punbb-to-nodebb~~
-see [this](https://github.com/akhoury/nodebb-plugin-import) until the link above is updated.
+inpired from http://www.workinprogress.ca/punbb-to-nodebb and forked from https://github.com/patricksebastien/nodebb-plugin-import-punbb to be compatible with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import)
 
 --------------------------
 a PUNBB forum exporter
@@ -19,9 +17,8 @@ It's __just__ an exporter of [PUNBB](http://punbb.informer.com/), which provides
 
 it doesn't really need to be, nor that you can use it within NodeBB it self, but, having this as a plugin have few benefits:
 * a nodebb- namespace, since you can't really use it for anything else
-* it can easily `require` NodeBB useful tools, currently, it uses its [util.js](https://github.com/designcreateplay/NodeBB/blob/master/public/src/utils.js) for example.
-* Most importantly, [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) can install it and interact with it from within the NodeBB admin dashboard
-
+* it can easily `require` NodeBB useful tools
+* 
 
 ### What does it export?
 read carefully:
