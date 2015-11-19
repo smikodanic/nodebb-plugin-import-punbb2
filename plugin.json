@@ -1,8 +1,8 @@
 {
-	"id": "nodebb-plugin-import-punbb",
-	"name": "nodebb-plugin-import-punbb",
+	"id": "nodebb-plugin-import-punbb2",
+	"name": "nodebb-plugin-import-punbb2",
 	"description": "Export your PUNBB forum into a structured data files that nodebb-plugin-import can understand",
-	"url": "https://github.com/patricksebastien/nodebb-plugin-import-punbb",
+	"url": "https://github.com/akhoury/nodebb-plugin-import-punbb2",
     	"library": "./admin/index.js",
 	"hooks": [
 		{ "hook": "filter:admin.header.build", "method": "admin.menu"},
