@@ -123,7 +123,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
                 var map = {};
                 rows.forEach(function(row) {
                     row._name = row._name || 'Untitled Category';
-                    row._description = row._description || 'No decsciption available';
+                    row._description = row._description || 'No description available';
                     row._timestamp = ((row._timestamp || 0) * 1000) || startms;
                     map[row._cid] = row;
                 });
