@@ -44,11 +44,16 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             + prefix + 'users.realname as _alternativeusername, '
             + prefix + 'users.email as _registrationemail, '
             + prefix + 'users.registered as _joindate, '
+            + prefix + 'users.num_posts as _reputation, '
             + prefix + 'users.email as _email, '
             + prefix + 'users.signature as _signature, '
             + prefix + 'users.url as _website, '
-            + prefix + 'users.location as _location '
+            + prefix + 'users.location as _location, '
+            + prefix + 'groups.g_user_title as _level, '
+            + prefix + 'bans.username as _banned '
             + 'FROM ' + prefix + 'users '
+            + 'LEFT JOIN ' + prefix + 'bans ON ' + prefix + 'bans.username = ' + prefix + 'users.username '
+            + 'LEFT JOIN ' + prefix + 'groups ON ' + prefix + 'groups.g_id = ' + prefix + 'users.group_id '
             + (start >= 0 && limit >= 0 ? 'LIMIT ' + start + ',' + limit : '');
 
 
@@ -58,7 +63,9 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             return callback(err);
         }
 
-        Exporter.connection.query(query,
+		console.log("\n\n" + query + "\n\n");
+
+		Exporter.connection.query(query,
             function(err, rows) {
                 if (err) {
                     Exporter.error(err);
@@ -68,10 +75,6 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
                 //normalize here
                 var map = {};
                 rows.forEach(function(row) {
-                    // nbb forces signatures to be less than 150 chars
-                    // keeping it HTML see https://github.com/akhoury/nodebb-plugin-import#markdown-note
-                    row._signature = Exporter.truncateStr(row._signature || '', 150);
-
                     // from unix timestamp (s) to JS timestamp (ms)
                     row._joindate = ((row._joindate || 0) * 1000) || startms;
 
@@ -81,6 +84,8 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
                     // I don't know about you about I noticed a lot my users have incomplete urls, urls like: http://
                     row._picture = Exporter.validateUrl(row._picture);
                     row._website = Exporter.validateUrl(row._website);
+
+					row._banned = row._banned ? 1 : 0;
 
                     map[row._uid] = row;
                 });
@@ -145,23 +150,18 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             + prefix + 'topics.id as _tid, '
             + prefix + 'topics.forum_id as _cid, '
             + prefix + 'posts.poster_id as _uid, '
+			+ prefix + 'topics.subject as _title, '
+			+ prefix + 'posts.message  as _content, '
             + prefix + 'topics.num_views as _viewcount, '
-            + prefix + 'topics.subject as _title, '
             + prefix + 'topics.posted as _timestamp, '
-            + prefix + 'posts.topic_id as _post_tid, '
-            + prefix + 'posts.poster_ip as _ip, '
-            + prefix + 'posts.message  as _content '
-            + 'FROM ' + prefix + 'topics, '
-            + prefix + 'posts '
-            + 'WHERE ' + prefix + 'topics.id = '
-            + prefix + 'posts.topic_id AND '
-            + prefix + 'posts.id IN(SELECT MIN('
-            + prefix + 'posts.id) FROM '
-            + prefix + 'posts WHERE '
-            + prefix + 'posts.topic_id = '
-            + prefix + 'topics.id) '
+            + prefix + 'topics.sticky as _pinned, '
+            + prefix + 'topics.closed  as _locked, '
+            + prefix + 'posts.poster_ip as _ip '
+            + 'FROM ' + prefix + 'topics '
+            + 'LEFT JOIN ' + prefix + 'posts ON ' + prefix + 'posts.id = ' + prefix + 'topics.first_post_id '
             + (start >= 0 && limit >= 0 ? 'LIMIT ' + start + ',' + limit : '');
 
+		console.log("\n\n" + query + "\n\n");
 
         if (!Exporter.connection) {
             err = {error: 'MySQL connection is not setup. Run setup(config) first'};
@@ -206,7 +206,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             + prefix + 'poster_id as _uid, '
             + prefix + 'posts.poster_ip as _ip '
             + 'FROM ' + prefix + 'posts '
-            + 'ORDER BY ' + prefix + 'posts.posted '
+            + 'WHERE ' + prefix + 'posts.id NOT IN (SELECT first_post_id FROM ' + prefix + 'topics)'
             + (start >= 0 && limit >= 0 ? 'LIMIT ' + start + ',' + limit : '');
 
 
@@ -215,6 +215,8 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
             Exporter.error(err.error);
             return callback(err);
         }
+
+		console.log("\n\n" + query + "\n\n");
 
         Exporter.connection.query(query,
             function(err, rows) {
