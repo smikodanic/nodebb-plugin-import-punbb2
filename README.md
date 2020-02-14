@@ -17,9 +17,9 @@ NodeBB package.json
 ```
 
 
+## Intro
 
-
-inpired from http://www.workinprogress.ca/punbb-to-nodebb and forked from https://github.com/patricksebastien/nodebb-plugin-import-punbb to be compatible with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import)
+> Inpired from http://www.workinprogress.ca/punbb-to-nodebb and forked from https://github.com/patricksebastien/nodebb-plugin-import-punbb to be compatible with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import)
 
 --------------------------
 a PUNBB forum exporter
