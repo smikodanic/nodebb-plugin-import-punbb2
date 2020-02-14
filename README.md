@@ -1,5 +1,23 @@
 nodebb-plugin-import-punbb2
 ==========================
+Contains fixes:
+- mysql2
+- config.dbpass = config.dbpass.toString();
+
+and works with NodeBB v1.12.1  ```git checkout v1.12.1```
+
+## 1. Installation
+```bash
+NodeBB package.json
+-------------------
+{
+"nodebb-plugin-import-punbb2": "git@github.com:smikodanic/nodebb-plugin-import-punbb2.git"
+}
+
+```
+
+
+
 
 inpired from http://www.workinprogress.ca/punbb-to-nodebb and forked from https://github.com/patricksebastien/nodebb-plugin-import-punbb to be compatible with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import)
 
