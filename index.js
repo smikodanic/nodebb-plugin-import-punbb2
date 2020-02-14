@@ -1,6 +1,6 @@
 
 var async = require('async');
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var _ = require('underscore');
 var noop = function(){};
 var logPrefix = '[nodebb-plugin-import-punbb2]';
@@ -9,6 +9,7 @@ var logPrefix = '[nodebb-plugin-import-punbb2]';
 
     Exporter.setup = function(config, callback) {
         Exporter.log('setup');
+	config.dbpass = config.dbpass.toString();
 
         // mysql db only config
         // extract them from the configs passed by the nodebb-plugin-import adapter
